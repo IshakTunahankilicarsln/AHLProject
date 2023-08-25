@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AhlCourseProject.WebUI.props" />
+</Project>

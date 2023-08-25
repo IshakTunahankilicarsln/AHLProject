@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\NLayer_Task.WebApi.props" />
+</Project>

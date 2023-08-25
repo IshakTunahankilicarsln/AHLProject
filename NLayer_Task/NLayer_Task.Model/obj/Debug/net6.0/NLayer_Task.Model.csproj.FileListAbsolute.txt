@@ -1,0 +1,15 @@
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\bin\Debug\net6.0\NLayer_Task.Model.deps.json
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\bin\Debug\net6.0\NLayer_Task.Model.dll
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\bin\Debug\net6.0\NLayer_Task.Model.pdb
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\bin\Debug\net6.0\Infrastructure.dll
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\bin\Debug\net6.0\Infrastructure.pdb
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\NLayer_Task.Model.csproj.AssemblyReference.cache
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\NLayer_Task.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\NLayer_Task.Model.AssemblyInfoInputs.cache
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\NLayer_Task.Model.AssemblyInfo.cs
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\NLayer_Task.Model.csproj.CoreCompileInputs.cache
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\NLayer_Task.Model.csproj.CopyComplete
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\NLayer_Task.Model.dll
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\refint\NLayer_Task.Model.dll
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\NLayer_Task.Model.pdb
+C:\Users\90554\source\repos\NLayer_Task\NLayer_Task.Model\obj\Debug\net6.0\ref\NLayer_Task.Model.dll

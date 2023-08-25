@@ -1,0 +1,209 @@
+﻿@{
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+}
+@using AhlCourseProject.WebUI.Areas.AdminPanel.Models.Dtos.Items
+@model List<CustomerItem>
+@section customStyles{
+    <link rel="stylesheet" href="~/adminPanel/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/adminPanel/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/adminPanel/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <style>
+        .password-container {
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+}
+
+
+@section customScripts{
+    <script src="~/adminPanel/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/adminPanel/plugins/jszip/jszip.min.js"></script>
+    <script src="~/adminPanel/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/adminPanel/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script>
+        function togglePasswordVisibility(element) {
+            const passwordMasked = element.querySelector('.password-masked');
+            const passwordVisible = element.querySelector('.password-visible');
+
+            if (passwordMasked.style.display === 'none') {
+                passwordMasked.style.display = 'inline';
+                passwordVisible.style.display = 'none';
+            } else {
+                passwordMasked.style.display = 'none';
+                passwordVisible.style.display = 'inline';
+            }
+        }
+    </script>
+    <script>
+
+        $(document).ready(function () {
+
+
+            //$("#btnSave").click(function () {
+            //    let formData = new FormData();
+
+            //    var file = $("#fuCategoryImage").get(0).files[0];
+
+            //    formData.append("categoryName", $("#txtCategoryName").val());
+            //    formData.append("description", $("#txtDescription").val());
+            //    formData.append("categoryImage", file);
+
+            //    $.ajax({
+            //        url: "/AdminPanel/Category/Save",
+            //        method: "post",
+            //        datatype: "json",
+            //        data: formData,
+            //        contentType: false,
+            //        processData: false,
+            //        success: function (response) {
+            //            if (response.isSuccess) {
+            //                alert("İşlem Başarılı " + response.message);
+            //            }
+            //            else {
+            //                alert("İşlem Başarısız " + response.message);
+            //            }
+            //        }
+            //    });
+
+            //});
+        });
+    </script>
+}
+
+
+<div class="row mt-2">
+    <div class="col-12">
+        <!-- Custom Tabs -->
+        <div class="card dark-mode" @*style="background-color:darkgrey;"*@>
+            <div class="card-header d-flex p-0 text-black">
+                <h1 class="list-header my-auto mx-2 text-light">Müşteriler</h1>
+                <ul class="nav nav-pills ml-auto p-2">
+                    <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Müşteriler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Yeni</a></li>
+                </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+                <div class="tab-content">
+
+                    <!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane -->
+                    <div class="tab-pane active" id="tab_1">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card dark-mode">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Fixed Header Table</h3>
+
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search" disabled>
+
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-default" disabled>
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body table-responsive p-0 text-dark " style="height:52rem; background-color:	#343835;">
+                                        <table class="table table-head-fixed text-nowrap ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Resim</th>
+                                                    <th>Ad</th>
+                                                    <th>Soyad</th>
+                                                    <th>Telefon num :</th>
+                                                    <th>e-mail</th>
+                                                    <th>Şifre</th>
+                                                    <th>#</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr >
+                                                        <td>
+                                                            <div class="float-left bg-light my-auto mx-2 text-center align-content-center"  style="overflow:hidden; border-radius:50%; width:50px;height:50px;">
+                                                                <img src="~/adminPanel/Images/customerImages/DefaultPP.png" style="border-radius:50%; width:50px;height:50px;">
+                                                            </div>
+                                                        </td>
+                                                        <td>@item.FirstName</td>
+                                                        <td>@item.LastName</td>
+                                                        <td>@item.Phone</td>
+                                                        <td>@item.Mail</td>
+                                                        <td>
+                                                            <div class="password-container" onclick="togglePasswordVisibility(this)">
+                                                                <span class="password-masked">*********</span>
+                                                                <span class="password-visible" style="display:none;">@item.Password</span>
+                                                            </div>
+                                                        </td>
+                                                        <td><a href="/AdminPanel/Category/Delete/1" class="btn btn-outline-danger mx-auto">Sil</a></td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                        
+                    </div>
+
+                    <!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane -->
+
+                    <div class="tab-pane" id="tab_2">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Yeni Kategori kaydı</h3>
+                            </div>
+
+                            <form>
+                                <div class="card-body dark-mode" $enable-dark-mode>
+                                    <div class="form-group ">
+                                        <label >Adı</label>
+                                        <input type="text" class="form-control" id="txtCategoryName" placeholder="Kategori Adı">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Açıklama</label>
+                                        <textarea  id="txtDescription" class="form-control" placeholder="Açıklama"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Resim</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input $enable-dark-mode type="file" class="custom-file-input" id="fuCategoryImage">
+                                                <label class="custom-file-label" for="exampleInputFile">Resim Seçiniz</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button id="btnSave" type="button" class="btn btn-primary">Kaydet</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane -->
+
+                </div>
+                <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+        </div>
+        <!-- ./card -->
+    </div>
+    <!-- /.col -->
+</div>

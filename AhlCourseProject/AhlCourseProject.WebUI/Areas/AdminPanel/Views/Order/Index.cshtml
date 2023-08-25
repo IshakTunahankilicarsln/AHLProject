@@ -1,0 +1,168 @@
+﻿@{
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+}
+@using AhlCourseProject.WebUI.Areas.AdminPanel.Models.Dtos.Items
+@model List<OrderItem>
+@section customStyles{
+    <link rel="stylesheet" href="~/adminPanel/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/adminPanel/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/adminPanel/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+}
+
+
+@section customScripts{
+    <script src="~/adminPanel/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/adminPanel/plugins/jszip/jszip.min.js"></script>
+    <script src="~/adminPanel/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/adminPanel/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/adminPanel/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+
+            //$("#btnSave").click(function () {
+            //    let formData = new FormData();
+
+            //    var file = $("#fuCategoryImage").get(0).files[0];
+
+            //    formData.append("categoryName", $("#txtCategoryName").val());
+            //    formData.append("description", $("#txtDescription").val());
+            //    formData.append("categoryImage", file);
+
+            //    $.ajax({
+            //        url: "/AdminPanel/Category/Save",
+            //        method: "post",
+            //        datatype: "json",
+            //        data: formData,
+            //        contentType: false,
+            //        processData: false,
+            //        success: function (response) {
+            //            if (response.isSuccess) {
+            //                alert("İşlem Başarılı " + response.message);
+            //            }
+            //            else {
+            //                alert("İşlem Başarısız " + response.message);
+            //            }
+            //        }
+            //    });
+
+            //});
+        });
+    </script>
+}
+
+<h5 class="mb-2 pt-3">Tabs in Cards</h5>
+
+<div class="row">
+    <div class="col-12">
+        <!-- Custom Tabs -->
+        <div class="card">
+            <div class="card-header d-flex p-0">
+                <h3 class="card-title p-3">Tabs</h3>
+                <ul class="nav nav-pills ml-auto p-2">
+                    <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Sparişler</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Yeni</a></li>
+                </ul>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+                <div class="tab-content">
+
+                    <!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane -->
+                    <div class="tab-pane active" id="tab_1">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Müşteri Adı</th>
+                                    <th>Çalışan adı</th>
+                                    <th>Sipariş Tarihi</th>
+                                    <th>B. Teslim Tarihi</th>
+                                    <th>Ülke</th>
+                                    <th>Şehir</th>
+                                    <th>Gönderi Adı</th>
+                                    <th>Adres</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.CustomerID</td>
+                                        <td>@item.OrderDate</td>
+                                        <td>@item.PostedDate</td>
+                                        <td>@item.DeliveryDate</td>
+                                        <td>@item.ShippingCompanyID</td>
+                                        <td>@item.CostumerShippingAdresID</td>
+                                        <td><a href="/AdminPanel/Category/Delete/@item.OrderID" class="btn btn-outline-danger mx-auto">Sil</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Müşteri Adı</th>
+                                    <th>Çalışan adı</th>
+                                    <th>Sipariş Tarihi</th>
+                                    <th>B. Teslim Tarihi</th>
+                                    <th>Ülke</th>
+                                    <th>Şehir</th>
+                                    <th>Gönderi Adı</th>
+                                    <th>Adres</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane -->
+
+                    <div class="tab-pane" id="tab_2">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Yeni Kategori kaydı</h3>
+                            </div>
+
+                            <form>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label>Adı</label>
+                                        <input type="text" class="form-control" id="txtCategoryName" placeholder="Kategori Adı">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Açıklama</label>
+                                        <textarea id="txtDescription" class="form-control" placeholder="Açıklama"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Resim</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="fuCategoryImage">
+                                                <label class="custom-file-label" for="exampleInputFile">Resim Seçiniz</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button id="btnSave" type="button" class="btn btn-primary">Kaydet</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane --><!-- /.tab-pane -->
+
+                </div>
+                <!-- /.tab-content -->
+            </div><!-- /.card-body -->
+        </div>
+        <!-- ./card -->
+    </div>
+    <!-- /.col -->
+</div>
